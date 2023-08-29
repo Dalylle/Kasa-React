@@ -1,0 +1,48 @@
+@import "../../scss/variables.scss";
+
+.banner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  background-image: url("./public/Image_page_accueil.png");
+  background-position: center;
+  background-size: cover;
+  min-height: 15vh;
+  color: $color-primary;
+  max-width: 95%;
+  margin: auto;
+  & p {
+    width: 74%;
+    margin-left: 20px;
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1023px) {
+  .banner {
+    min-height: 15vh;
+    & p {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      font-size: 30px;
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+  }
+  .banner p {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 48px;
+  }
+}

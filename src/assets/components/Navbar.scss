@@ -1,0 +1,35 @@
+@import "../../scss/variables.scss";
+
+nav {
+  margin-bottom: 20px;
+}
+.logo {
+  margin-right: auto;
+}
+.navbar img {
+  width: 115px;
+  height: 45px;
+}
+.navbar {
+  display: flex;
+  align-content: center;
+  gap: 20px;
+  align-items: center;
+  color: $color-secondary;
+  width: 95%;
+  margin: auto;
+  padding-top: 20px;
+  & a {
+    text-decoration: none;
+    color: $color-secondary;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (width > 767px) {
+  .navbar {
+    gap: 40px;
+  }
+}
