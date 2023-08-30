@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 function Navbar() {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <nav>

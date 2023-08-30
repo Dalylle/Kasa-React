@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../assets/components/Navbar";
 import Footer from "../../assets/components/Footer";
 import "./Error.scss";
+import { NavLink } from "react-router-dom";
 
 function Error() {
   return (
@@ -11,9 +12,9 @@ function Error() {
         <h5>404</h5>
         <p>Oups! La page que vous demandez n'existe pas.</p>
       </div>
-      <div className="message-return">
+      <NavLink to="/" className="message-return">
         <p>Retourner sur la page d'accueil</p>
-      </div>
+      </NavLink>
       <Footer />
     </div>
   );

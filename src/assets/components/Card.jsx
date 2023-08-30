@@ -2,11 +2,12 @@ import React from "react";
 import "./Card.scss";
 import { Link } from "react-router-dom";
 
-function Card() {
+function Card(props) {
   return (
     <div className="card">
       <Link to="accommodation">
-        <div className="card-title">Titre de la location</div>
+        <img src={props.cover} alt="" />
+        <div className="card-title">{props.title}</div>
       </Link>
     </div>
   );
