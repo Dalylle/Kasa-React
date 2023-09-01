@@ -1,0 +1,37 @@
+@import "../../scss/variables.scss";
+
+.collapse-container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-block: 30px;
+  & .collapse-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: $color-secondary;
+    color: $color-primary;
+    position: relative;
+    border-radius: 10px;
+    & h3 {
+      margin-left: 10px;
+    }
+    & p {
+      display: flex;
+      align-items: center;
+    }
+    i {
+      position: absolute;
+      right: 10px;
+    }
+  }
+  & .collapse-content {
+    width: 100%;
+    background-color: $color-tertiary;
+    color: $color-secondary;
+    border-radius: 10px;
+  }
+}
