@@ -1,77 +1,76 @@
 import React from "react";
-import Footer from "../../assets/components/Footer";
-import Navbar from "../../assets/components/Navbar";
+import { useParams } from "react-router-dom";
+import Collapse from "../../components/Collapse";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import accommodations from "@/assets/data";
 import "./Accommodation.scss";
 
 function Accommodation() {
+  const { id } = useParams();
+
+  // search for the id in data
+  const data = accommodations.find((a) => a.id === id);
+
+  const ratingsRed = [];
+  for (let i = 0; i < parseInt(data.rating) - 1; i++) {
+    ratingsRed.push(
+      <span key={i}>
+        <img src="/red-star.png" alt="étoile rouge" />
+      </span>
+    );
+  }
+
+  const ratingsgrey = [];
+  for (let i = parseInt(data.rating) - 1; i < 5; i++) {
+    ratingsgrey.push(
+      <span key={i}>
+        <img src="/grey-star.png" alt="étoile grise" />
+      </span>
+    );
+  }
+
+  const equipements = data.equipments.join(", ");
+
   return (
     <div>
       <Navbar />
       <div>
         <div className="carrousel">
-          <img src="./public/Background.jpg" alt="Image du carroussel" />
+          {data.pictures.map((picture) => (
+            <img src={picture} alt="Image du carroussel" key={picture} />
+          ))}
         </div>
         <div className="title-and-location">
           <div className="title-and-info">
-            <h3>Paris center, on the romantic canal Saint-Martin</h3>
-            <p>Paris, Ile-de-France</p>
+            <h3>{data.title}</h3>
+            <p>{data.location}</p>
             <div className="info">
-              <p className="tag">Cozy</p>
-              <p className="tag">Canal</p>
-              <p className="tag">Paris 10</p>
+              {data.tags.map((tag) => (
+                <p className="tag" key={tag}>
+                  {tag}
+                </p>
+              ))}
             </div>
           </div>
           <div className="star-host">
             <div className="star-position">
-              <span>
-                <img src="./public/red-star.png" alt="étoile rouge" />
-              </span>
-              <span>
-                <img src="/public/red-star.png" alt="étoile rouge" />
-              </span>
-              <span>
-                <img src="/public/red-star.png" alt="étoile rouge" />
-              </span>
-              <span>
-                <img src="/public/grey-star.png" alt="étoile grise" />
-              </span>
-              <span>
-                <img src="/public/grey-star.png" alt="étoile grise" />
-              </span>
+              {ratingsRed}
+              {ratingsgrey}
             </div>
             <div className="info-host">
-              <p>Alexandre Dumas</p>
-              <img src="./public/Host.png" alt="photo de l'hote" />
+              <p>{data.host.name}</p>
+              <img src={data.host.picture} alt="photo de l'hote" />
             </div>
           </div>
         </div>
         <div className="description-and-equipements">
-          <div className="title-content">
-            <h4 className="title">Description</h4>
-            <img
-              src="/public/arrow-back.png"
-              alt="fleche pour rabbatre ou deployer"
-            />
+          <div>
+            <Collapse title="Description" texte={data.description} />
           </div>
-          <p className="description-and-equipements-content">
-            bhfvb jhd ihe hv h irejc iejc iej idjv idjvid jvfk dfvifj kdj dvid
-            kjcd vid vi bhfvb jhd ihe hv h irejc iejc iej idjv idjvid jvfk
-            dfvifj kdj dvid kjcd vid vi bhfvb jhd ihe hv h irejc iejc iej idjv
-            idjvid jvfk dfvifj kdj dvid kjcd vid vi
-          </p>
-          <div className="title-content">
-            <h4 className="title">Equipements</h4>
-            <img
-              src="./public/arrow-back.png"
-              alt="fleche pour rabbatre ou deployer"
-            />
+          <div>
+            <Collapse title="Equipements" texte={equipements} />
           </div>
-          <p className="description-and-equipements-content">
-            bhfvb jhd ihe hv h irejc iejc iej idjv idjvid jvfk dfvifj kdj dvid
-            kjcd vid vi bhfvb jhd ihe hv h irejc iejc iej idjv idjvid jvfk
-            dfvifj kdj dvid kjcd vid vi bhfvb jhd ihe hv h irejc iejc iej idjv
-            idjvid jvfk dfvifj kdj dvid kjcd vid vi
-          </p>
         </div>
       </div>
       <Footer />
